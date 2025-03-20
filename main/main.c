@@ -12,7 +12,6 @@ volatile uint32_t ti = 0;
 volatile uint32_t tf = 0;
 volatile bool cabou_tempo = false;
 
-bool iniciar_leitura = false;
 
 void echo_callback(uint gpio, uint32_t events) {
     if (events & GPIO_IRQ_EDGE_RISE) {
@@ -64,6 +63,7 @@ int main() {
 
     inicializar_rtc();
     alarm_id_t alarme;
+    bool iniciar_leitura = false;
 
     while (true) {
         int c = getchar_timeout_us(100); 
